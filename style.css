@@ -1,0 +1,5 @@
+header, main, footer, nav{
+    min-height: 10vh;
+    border: 1px solid;
+    padding:3%;
+}
