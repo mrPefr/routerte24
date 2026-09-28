@@ -11,10 +11,18 @@ App::get("/about", "views/about");
 App::get("/faq", "views/faq");
 
 
+
+
+
 // Routes för guitars
 App::get("/guitars/create", 'views/create');
 App::post("/guitars/create",function(){
     Res::debug($_POST);
+});
+
+// Sparar detta till fredag...
+App::get('/guitars/$id', function($id){
+    Res::debug($id);
 });
 
 
