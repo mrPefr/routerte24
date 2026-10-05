@@ -3,3 +3,9 @@ header, main, footer, nav{
     border: 1px solid;
     padding:3%;
 }
+
+
+section{
+    color:red;
+    font-size:2rem;
+}

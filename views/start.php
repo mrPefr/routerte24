@@ -21,8 +21,14 @@
             <a href="/">HOME</a>
             <a href="/about">ABOUT</a>
             <a href="/faq">FAQ</a>
-            <a href="/guitars/create">CREATE GUITAR</a>
+            <a href="/register">REGISTER</a>
         </nav>
     </header>
+    <section>
+        <?php 
+        if(!empty($_GET['error']))
+            echo  $_GET['error'];
+        ?>
+    </section>
     <main>
         

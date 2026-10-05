@@ -16,4 +16,12 @@ class Res
         header("Content-Type:application/json");
         echo json_encode($var);
     }
+
+    public static function redirect($path, $error=""){
+
+        header("Location:$path?error=$error");
+
+    }
+
+
 }
