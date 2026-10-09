@@ -32,22 +32,50 @@ App::get("/register", "views/register");
 App::post("/register", function () {
 
     if (empty($_POST['email']) || empty($_POST['password'])) {
-        Res::redirect("/register", "Måste fylla i data");
+        Res::redirect_error("/register", "Måste fylla i data");
         return;
     }
     if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-        Res::redirect("/register", "Epost-fel");
+        Res::redirect_error("/register", "Epost-fel");
         return;
     }
     if (strlen($_POST['password']) < 8) {
-        Res::redirect("/register", "Minst 8 tecken på lösenord");
+        Res::redirect_error("/register", "Minst 8 tecken på lösenord");
         return;
     }
 
 
-    // Kolla epost och lösenord så att allt är ok.
-    // Kalla på en registringsfunktion
+    // hämta lista med users
+    $users = json_decode(file_get_contents("users.json"), true);
 
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Först kolla så att användren inte redan finns
+
+    $checkUser = array_find($users, function ($u) use ($email) {
+        return $u['email'] == $email;
+    });
+
+    if ($checkUser != null) {
+        Res::redirect_error("/register", "Användare finns redan");
+        return;
+    }
+    // Skapa id till ny user
+    $id = uniqid(true);
+
+    // automatisk append/push
+    $users[] = [
+        "email" => $email,
+        "password" => password_hash($password, PASSWORD_DEFAULT),
+        "id" => $id
+    ];
+
+    // spara användare till fil;
+
+    file_put_contents("users.json", json_encode($users, JSON_PRETTY_PRINT));
+
+    Res::redirect("/register", "REGISTER SUCCESS");
 });
 
 

@@ -17,11 +17,17 @@ class Res
         echo json_encode($var);
     }
 
-    public static function redirect($path, $error=""){
+    public static function redirect_error($path, $error=""){
 
         header("Location:$path?error=$error");
 
     }
+    public static function redirect($path, $mes=""){
+
+        header("Location:$path?message=$mes");
+
+    }
+
 
 
 }

@@ -30,5 +30,11 @@
             echo  $_GET['error'];
         ?>
     </section>
+    <section class = "success">
+        <?php 
+        if(!empty($_GET['message']))
+            echo  $_GET['message'];
+        ?>
+    </section>
     <main>
         

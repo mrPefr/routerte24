@@ -1,0 +1,22 @@
+[
+    {
+        "email": "mrpefr@gmail.com",
+        "password": "$2y$12$KFBlrxdfKbfOnWoybxjCL.wr15sKJFCvEEX6nnsa5Rxzwn\/3QLsOW",
+        "id": "16ac39776bb25d"
+    },
+    {
+        "email": "lenny@lenny.se",
+        "password": "$2y$12$gKd\/Go06I9auSHj.Fy2Hf.T07E8cAeVhD2BOkCwdRv\/p53SQ.Amz6",
+        "id": "16ac397a5aa06d"
+    },
+    {
+        "email": "jens@jens.se",
+        "password": "$2y$12$ehfFxl0saf0CWB0Oj\/bytuocCcOdJB1ei.8mximS436u8Rq08B6ci",
+        "id": "16ac3986e5bc17"
+    },
+    {
+        "email": "bengt@bengt.se",
+        "password": "$2y$12$4\/ydhZV12LQL7WxHRzAd\/OWgTTmrFdwo3BjejVfINBb2nBXuPN84u",
+        "id": "16ac39a5e20577"
+    }
+]
