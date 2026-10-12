@@ -1,3 +1,8 @@
+*{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-sizing: border-box;
+}
+
 header, main, footer, nav{
     min-height: 10vh;
     border: 1px solid;
@@ -12,4 +17,15 @@ section{
 
 .success{
     color:green;
+}
+
+nav{
+    display:flex;
+    gap:40px;
+    flex-wrap: wrap;
+}
+
+nav a{
+    color:#404040;
+    text-decoration: none;
 }

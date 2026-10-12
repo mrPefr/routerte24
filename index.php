@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 // Hämta klass från annan fil
 require_once("router.php");
 require_once("response.php");
@@ -78,9 +80,70 @@ App::post("/register", function () {
     Res::redirect("/register", "REGISTER SUCCESS");
 });
 
+// Route som visar formulär
+App::get("/login", "views/login");
+
+// Route som tar emot användarens inloggningsdata
+App::post("/login", function () {
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    //  Hämta alla users
+    $users = json_decode(file_get_contents("users.json"), true);
+
+    // Hitta användare med email = $email
+    $checkUser = array_find($users, function ($u) use ($email) {
+
+        return $email == $u['email'];
+    });
+
+    // Om vi INTE hittar en användare
+    if ($checkUser == null) {
+        Res::redirect_error("/register", "No such user please REGISTER!!!");
+        return;
+    }
+
+    // Kolla lösenord för nu vet vi att vi hittat en user
+    if (!password_verify($password, $checkUser['password'])) {
+        Res::redirect_error("/login", "Wrong password");
+        return;
+    }
+
+    // TJOHO nu är vi inloggade vad ska hända nu??????
+
+    $_SESSION["auth"] = true;
+    $_SESSION['email'] = $email;
+
+    Res::redirect("/","LOGGED IN");
+
+});
 
 
+App::get("/session", function(){
 
+    Res::debug($_SESSION);
+
+});
+
+App::get("/secret", function(){
+
+    if(empty($_SESSION['auth'])){
+        Res::redirect_error("/", "NOT LOGGED IN");
+        return;
+    }
+
+    Res::redirect("/", "The secret is friday!!!");
+
+
+});
+
+App::get("/logout", function(){
+
+    session_destroy();
+    Res::redirect("/", "Logged OUT");
+
+});
 
 
 // om request som användaren gör inte funkar visa 404.php som finns i views

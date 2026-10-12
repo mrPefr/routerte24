@@ -18,5 +18,10 @@
         "email": "bengt@bengt.se",
         "password": "$2y$12$4\/ydhZV12LQL7WxHRzAd\/OWgTTmrFdwo3BjejVfINBb2nBXuPN84u",
         "id": "16ac39a5e20577"
+    },
+    {
+        "email": "azmi@azmi.se",
+        "password": "$2y$12$7VM\/C747sSobse4OHA.kv.QD68phYW5snHd.OxSfQmhu8rtuGucG2",
+        "id": "16ac8dc3ce4450"
     }
 ]

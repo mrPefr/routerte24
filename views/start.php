@@ -22,6 +22,10 @@
             <a href="/about">ABOUT</a>
             <a href="/faq">FAQ</a>
             <a href="/register">REGISTER</a>
+            <a href="/login">LOGIN</a>
+            <a href="/logout">LOGOUT</a>
+            <a href="/secret">SECRET</a>
+            <a href="/session">CHECK SESSION</a>
         </nav>
     </header>
     <section>
