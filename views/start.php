@@ -26,6 +26,7 @@
             <a href="/logout">LOGOUT</a>
             <a href="/secret">SECRET</a>
             <a href="/session">CHECK SESSION</a>
+            <a href="/posts/create">CREATE POST</a>
         </nav>
     </header>
     <section>

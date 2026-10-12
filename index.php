@@ -1,10 +1,13 @@
 <?php
 
-session_start();
+session_start([
+'cookie_httponly' => true,
+]);
 
 // Hämta klass från annan fil
 require_once("router.php");
 require_once("response.php");
+require_once("postsModel.php");
 
 
 
@@ -12,20 +15,36 @@ App::get("/", 'views/home');
 App::get("/about", "views/about");
 App::get("/faq", "views/faq");
 
+/// posts-routes
 
+// fake create route
+App::get('/posts/$title/$text', function($title, $text){
 
-
-
-// Routes för guitars
-App::get("/guitars/create", 'views/create');
-App::post("/guitars/create", function () {
-    Res::debug($_POST);
+    if(empty($_SESSION['uid'])){
+        Res::redirect_error("/login", "Måste vara inloggad");
+        return;
+    }
+    Posts::create($title, $text,$_SESSION['uid'] );
+    Res::redirect("/", "Post created");
 });
 
-// Sparar detta till fredag...
-App::get('/guitars/$id', function ($id) {
-    Res::debug($id);
+App::get("/posts/create", "views/createPost");
+
+App::post('/posts', function(){
+
+    if(empty($_SESSION['uid'])){
+        Res::redirect_error("/login", "Måste vara inloggad");
+        return;
+    }
+    $title = $_POST['title'];
+    $text = $_POST['text'];
+
+    Posts::create($title, $text,$_SESSION['uid'] );
+    Res::redirect("/", "Post created");
 });
+
+
+
 
 // Route för att kunna visa formulär på webbsidan
 App::get("/register", "views/register");
@@ -114,6 +133,7 @@ App::post("/login", function () {
 
     $_SESSION["auth"] = true;
     $_SESSION['email'] = $email;
+    $_SESSION['uid'] = $checkUser['id'];
 
     Res::redirect("/","LOGGED IN");
 
