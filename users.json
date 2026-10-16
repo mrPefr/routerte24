@@ -23,5 +23,10 @@
         "email": "azmi@azmi.se",
         "password": "$2y$12$7VM\/C747sSobse4OHA.kv.QD68phYW5snHd.OxSfQmhu8rtuGucG2",
         "id": "16ac8dc3ce4450"
+    },
+    {
+        "email": "arne@arne.se",
+        "password": "$2y$12$fUvARfkbyUGgYKCjMvjrv.jTYG7AZmKsvTn5yskFBo5v5lhSXL7aS",
+        "id": "16ad0866fb0c16"
     }
 ]
